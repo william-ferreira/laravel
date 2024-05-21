@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use Barryvdh\Debugbar\Facades\Debugbar;
@@ -36,3 +37,6 @@ Route::get('/', HomeController::class);
 
 // Return view
 //Route::view('/blog', 'blog.index', ['name' => 'Code with me']);
+
+// Fallback Route
+Route::fallback(FallbackController::class);
