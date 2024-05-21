@@ -16,7 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 // GET
 Route::get('/blog', [PostsController::class, 'index']);
-Route::get('/blog/{id}', [PostsController::class, 'show']);
+//Route::get('/blog/{id}', [PostsController::class, 'show'])->whereNumber('id');
+//Route::get('/blog/{name}', [PostsController::class, 'show'])->whereAlpha('name');
+
+Route::get('/blog/{id}/{name}', [PostsController::class, 'show'])
+    ->whereNumber('id')
+    ->whereAlpha('name');
 
 // POST
 Route::get('/blog/create', [PostsController::class, 'create']);
