@@ -15,13 +15,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('posts')
-            // Check docs at https://laravel.com/docs/9.x/queries or class content
-            ->avg('min_to_read');
-
-        dd($posts);
-
-        return view('blog.index');
+        return view('blog.index', [
+            'posts' => DB::table('posts')->get()
+        ]);
     }
 
     /**
