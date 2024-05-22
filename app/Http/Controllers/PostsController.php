@@ -52,6 +52,14 @@ class PostsController extends Controller
 
         // Eloquent approach
 
+        $request->validate([
+            'title' => 'required|unique:posts|max:255',
+            'excerpt' => 'required',
+            'body' => 'required',
+            'image' => ['required', 'mimes:jpg,png,jpeg', 'max:5048'],
+            'min_to_read' => 'min:0|max:60'
+        ]);
+
         Post::create([
             'title' => $request->title,
             'excerpt' => $request->excerpt,
